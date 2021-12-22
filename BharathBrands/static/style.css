@@ -1,0 +1,21 @@
+nav{
+  background-color: #009DAE;
+}
+nav ul li a{
+  color: white!important;
+}
+.nav_right li{
+  border-left: 2px solid white;
+  margin-left: 1em;
+}
+.login-row{
+
+  color:black;
+
+}
+#odd{
+    background-color:#D7E9F7;
+}
+.login-row a{
+  color: black;
+}

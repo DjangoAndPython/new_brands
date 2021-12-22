@@ -1,0 +1,46 @@
+{% extends 'testapp/base.html' %}
+{% load static %}
+{% block bodyblock %}
+<div class="container" align='center'>
+  <div class="jumbotron">
+      <h2>Edit Records</h2>
+      <form method="POST">
+        {% csrf_token %}
+        <table>
+          <tr>
+              <td>Account Number</td>
+              <td>{{form.account_number}}</td>
+          </tr>
+          <tr>
+            <td>Account Name</td>
+            <td>{{form.account_name}}</td>
+          </tr>
+          <tr>
+            <td>Account Type</td>
+            <td>{{form.account_type}}</td>
+          </tr>
+          <tr>
+            <td>Opening Balance</td>
+            <td>{{form.opening_balance}}</td>
+          </tr>
+          <tr>
+            <td>Current Balance</td>
+            <td>{{form.current_balance}}</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td>{{form.description}}</td>
+          </tr>
+          <!-- <tr>
+            <td><input type="submit" value="Submit" class="btn btn-primary"></td>
+            <td><a href="/" class="btn btn-primary">Cancle</a></td>
+          </tr> -->
+        </table><br>
+        <input type="submit" value="Update" class="btn btn-primary">
+          <a href="/" class="btn btn-primary">Cancle</a
+
+      </form><br>
+    </div>
+</div>
+
+{% endblock %}

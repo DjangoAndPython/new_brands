@@ -1,0 +1,53 @@
+{% extends 'testapp/base.html' %}
+{% load static %}
+{% block bodyblock %}
+<div class="container" align='center'>
+  <div class="jumbotron">
+      <h2>To Create An New Department</h2><br>
+      <form method="POST">
+        {% csrf_token %}
+        <table>
+          <tr>
+            <td>Department Name</td>
+            <td>{{form.department_name}}</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td>{{form.description}}</td>
+          </tr>
+        </table><br>
+        <input type="submit" value="Submit" class="btn btn-primary">
+          <a href="/" class="btn btn-primary">Cancle</a
+
+      </form><br>
+      <!-- Show Department Data --><br>
+      <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="float:right;">List Department</a>
+      </p><br>
+      <div class="row" >
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body" style="background-color:#eee">
+              <table border="1">
+                <thead>
+                  <th>Department Name</th>
+                  <th>Description</th>
+                  <th></th>
+                  </thead>
+                  {% for department in new_depart %}
+                    <tr>
+                      <td>{{department.department_name}}</td>
+                      <td>{{department.description}}</td>
+                      <td align='center'><a href="edit-depart/{{department.id}}" class="btn btn-primary">Edit</a>
+                      <a href="delete-depart/{{department.id}}" class="btn btn-primary">Delete</a></td>
+                    </tr>
+                  {% endfor %}
+              </table>
+            </div></div></div></div>
+           <h4>We Have Three Expense</h4>
+            <a class="btn btn-primary" href="item-expense" role="button">Item Expensed</a>
+            <a class="btn btn-primary" href="hr-expense" role="button">HR Expensed</a>
+            <a class="btn btn-primary" href="misc-expense" role="button">Misc Expensed</a>
+    </div>
+</div>
+{% endblock %}

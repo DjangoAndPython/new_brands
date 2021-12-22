@@ -1,0 +1,48 @@
+{% extends 'testapp/base.html' %}
+{% load static %}
+{% block bodyblock %}
+<div class="container" align='center'>
+  <div class="jumbotron">
+      <h2>To Update An Hr Expense</h2><br>
+      <form method="POST">
+        {% csrf_token %}
+        <table>
+          <tr>
+            <td>Transaction Id</td>
+            <td>{{form.transaction_id}}</td>
+          </tr>
+          <tr>
+            <td>Date</td>
+            <td>{{form.date}}</td>
+          </tr>
+          <tr>
+            <td>Expense Type</td>
+            <td>{{form.expense_type}}</td>
+          </tr>
+          <tr>
+            <td>Staff Name</td>
+            <td>{{form.staff_name}}</td>
+          </tr>
+          <tr>
+            <td>Purpose</td>
+            <td>{{form.purpose}}</td>
+          </tr>
+          <tr>
+            <td>Amount</td>
+            <td>{{form.amount}}</td>
+          </tr>
+          <tr>
+            <td>Paid From Account</td>
+            <td>{{form.paid_from_account}}</td>
+          </tr>
+        </table><br>
+        <input type="submit" value="Update" class="btn btn-primary">
+          <a href="/" class="btn btn-primary">Cancle</a>
+
+      </form><br>
+      <!-- Show Department Data --><br>
+
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'testapp/base.html' %}
+{% load static %}
+{% block bodyblock %}
+<div class="container" align='center'>
+  <div class="jumbotron">
+      <h2>Generate Reports</h2><br>
+      <form method="POST">
+        {% csrf_token %}
+        <table>
+          <tr>
+            <td>Expense Type</td>
+            <td>{{form.expense_type}}</td>
+          </tr>
+          <tr>
+            <td>Account Number</td>
+            <td>{{form.account_number}}</td>
+          </tr>
+          <tr>
+            <td>Department Name</td>
+            <td>{{form.department_name}}</td>
+          </tr>
+          <tr>
+            <td>Item Name</td>
+            <td>{{form.item_name}}</td>
+          </tr>
+          <tr>
+            <td>From Date</td>
+            <td>{{form.from_date}}</td>
+          </tr>
+          <tr>
+            <td>To Date</td>
+            <td>{{form.to_date}}</td>
+          </tr>
+        </table><br>
+        <input type="submit" value="Generate Reports" class="btn btn-primary">
+          <a href="/" class="btn btn-primary">Cancle</a>
+
+      </form><br>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'testapp/base.html' %}
+{% load static %}
+{% block bodyblock %}
+<div class="container" align='center'>
+  <div class="jumbotron">
+      <h2>Create an account</h2><br>
+      <form method="POST">
+        {% csrf_token %}
+        <table>
+          <tr>
+              <td>Account Number</td>
+              <td>{{form.account_number}}</td>
+          </tr>
+          <tr>
+            <td>Account Name</td>
+            <td>{{form.account_name}}</td>
+          </tr>
+          <tr>
+            <td>Account Type</td>
+            <td>{{form.account_type}}</td>
+          </tr>
+          <tr>
+            <td>Opening Balance</td>
+            <td>{{form.opening_balance}}</td>
+          </tr>
+          <tr>
+            <td>Current Balance</td>
+            <td>{{form.current_balance}}</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td>{{form.description}}</td>
+          </tr>
+          <!-- <tr>
+            <td><input type="submit" value="Submit" class="btn btn-primary"></td>
+            <td><a href="/" class="btn btn-primary">Cancle</a></td>
+          </tr> -->
+        </table><br>
+        <input type="submit" value="Submit" class="btn btn-primary">
+          <a href="/" class="btn btn-primary">Cancle</a
+
+      </form><br><br>
+      <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="float:right;">List Accounts</a>
+      </p><br>
+      <div class="row" >
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body" style="background-color:#eee">
+              {% if acc_detail %}
+              <table border="2" class="account_table">
+                <thead>
+                  <th>Account Number</th>
+                  <th>Account Name</th>
+                  <th>Description</th>
+                  <!-- <th></th>
+                  <th></th> -->
+                </thead>
+                {% for data in acc_detail %}
+                  <tr>
+                    <td>{{data.account_number}}</td>
+                    <td>{{data.account_name}}</td>
+                    <td>{{data.description}}</td>
+                    <td align='center'><a href="edit/{{data.account_number}}" class="btn btn-primary">Edit</a>
+                        <a href="delete/{{data.account_number}}" class="btn btn-primary">Delete</a></td><br>
+                  </tr>
+                {% endfor %}
+              </table>
+              {% else %}
+            <h4>No Previouse Records</h4>
+              {% endif %}<br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <h2>To create expense types</h2><br>
+    <a href="create-expense">Create New Expense Type</a>
+
+  </div>
+</div>
+{% endblock %}

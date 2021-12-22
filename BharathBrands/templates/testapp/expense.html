@@ -1,0 +1,58 @@
+{% extends 'testapp/base.html' %}
+{% load static %}
+{% block bodyblock %}
+<div class="container" align='center'>
+  <div class="jumbotron">
+    <h2>Create An New Expense Type</h2><br>
+    <form method="POST">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <td>Expense Type Name</td>
+          <td>{{exp_form.expense_type_name}}</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{{exp_form.description}}</td>
+        </tr>
+      </table>
+      <input type="submit" name="" value="Sumbit" class="btn btn-primary">
+      <a href="/" class="btn btn-primary">Cancle</a>
+    </form><br>
+    <p>
+      <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="float:right;">List Expense Type</a>
+    </p><br>
+    <div class="row" >
+      <div class="col">
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+          <div class="card card-body" style="background-color:#eee">
+            {% if new_expense %}
+            <table border="1">
+              <thead>
+                <th>Expense Type Name</th>
+                <th>Description</th>
+              </thead>
+              {% for expense in new_expense %}
+              <tr>
+                <td>{{expense.expense_type_name}}</td>
+                <td>{{ expense.description}}</td>
+                <td align='center'><a href="edit-expense/{{expense.id}}" class="btn btn-primary">Edit</a>
+                <a href="delete-expense/{{expense.id}}" class="btn btn-primary">Delete</a></td>
+              </tr>
+              {% endfor %}
+            </table>
+            {% else %}
+            <h3>Not Found</h3>
+          <h4>No Previouse Records</h4>
+            {% endif %}<br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <h2>To create departments</h2>
+    <a href="/create-depart">To create departments</a>
+  </div>
+</div>
+{% endblock %}

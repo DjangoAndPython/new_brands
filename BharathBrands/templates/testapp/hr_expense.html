@@ -1,0 +1,79 @@
+{% extends 'testapp/base.html' %}
+{% load static %}
+{% block bodyblock %}
+<div class="container" align='center'>
+  <div class="jumbotron">
+      <h2>To Create An Hr Expense</h2><br>
+      <form method="POST">
+        {% csrf_token %}
+        <table>
+          <tr>
+            <td>Transaction Id</td>
+            <td>{{form.transaction_id}}</td>
+          </tr>
+          <tr>
+            <td>Date</td>
+            <td>{{form.date}}</td>
+          </tr>
+          <tr>
+            <td>Expense Type</td>
+            <td>{{form.expense_type}}</td>
+          </tr>
+          <tr>
+            <td>Staff Name</td>
+            <td>{{form.staff_name}}</td>
+          </tr>
+          <tr>
+            <td>Purpose</td>
+            <td>{{form.purpose}}</td>
+          </tr>
+          <tr>
+            <td>Amount</td>
+            <td>{{form.amount}}</td>
+          </tr>
+          <tr>
+            <td>Paid From Account</td>
+            <td>{{form.paid_from_account}}</td>
+          </tr>
+        </table><br>
+        <input type="submit" value="Submit" class="btn btn-primary">
+          <a href="/" class="btn btn-primary">Cancle</a>
+
+      </form><br>
+      <!-- Show Department Data --><br>
+      <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="float:right;">Expense Type</a>
+      </p><br>
+      <div class="row" >
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body" style="background-color:#eee">
+              <table border="1">
+                <thead>
+
+                  <th>Date</th>
+                  <th>Expense Type</th>
+                  <th>Staff Name</th>
+                  <th>Purpose</th>
+                  <th>Amount</th>
+                  <th>Paid From Account</th>
+                  <th></th>
+                  </thead>
+                  {% for data in data %}
+                    <tr>
+                      <td>{{data.date}}</td>
+                      <td>{{data.expense_type}}</td>
+                      <td>{{data.staff_name}}</td>
+                      <td>{{data.purpose}}</td>
+                      <td>{{data.amount}}</td>
+                      <td>{{data.paid_from_account}}</td>
+                      <td align='center'><a href="hr-expense-edit/{{data.id}}" class="btn btn-primary">Edit</a>
+                      <a href="hr-expense-delete/{{data.id}}" class="btn btn-primary">Delete</a></td>
+                    </tr>
+                  {% endfor %}
+              </table>
+              </div></div></div></div>
+              <a class="btn btn-primary" href="misc-expense" role="button">Misc Expensed</a>
+    </div>
+</div>
+{% endblock %}
